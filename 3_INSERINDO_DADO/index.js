@@ -35,8 +35,16 @@ app.post('/users/create',async(req,res)=>{
 
     // console.log(name, occupation,newsletter)
 
-await user.create({name, occupation,newsletter})
+await user.create({name, occupation,newsletter})// -----PROMISSE---
+//O AWAIT SÓ EXISTE PELO FATO DE ASYNC - QUE PODE ELA DEMORA UM POUCO
+//O AWAIT FAZ COM QUE A APLICAÇÃO NÃO ENTRE EM PANE ,ESPERANDO UMA TERMINA PARA SEGUIR PARA A SEGUINTE,MESMO QUE DEMORE .
+//o create vem do sequelize para inserir coisa na tabelo, que tem ele e a conexão do banco de dados
+// o user possui as info das tabelas 
+//linha importante para fazer o cadastro-------------------------------------------------------------
+
     return res.redirect('/')
+    //return res.STATUS(201).redirect('/')
+    
 })
 //ROTAS 
 app.get('/', (req, res) => {
