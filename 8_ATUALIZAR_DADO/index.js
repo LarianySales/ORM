@@ -66,10 +66,28 @@ app.post('/users/delete/:id', async (req, res) => {
 app.get('/users/edit/:id', async (req, res) => {
     const id = req.params.id
     const user = await User.findOne({ raw: true, where: { id: id } })
-    return res.render('edituser',{user:user})
+    return res.render('edituser', { user: user })
 })
 //EDITAR P2
 //USER.UPDATE
+// user.update()
+app.post('/users/update', async (req, res) => {
+    const { id, name, occupation } = req.body
+    let newsletter = req.body.newsletter
+    if (newsletter == 'on') {
+        newsletter = true
+    } else {
+        newsletter = false
+    }
+    const userData = {
+        id,
+        name,
+        occupation,
+        newsletter
+    }
+    await user.update(userData, { where: { id: id } })
+    return res.redirect('/')
+})
 //listar users na home
 app.get('/', async (req, res) => {
 

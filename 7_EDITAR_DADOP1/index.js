@@ -70,8 +70,8 @@ app.get('/users/edit/:id', async (req, res) => {
 })
 //EDITAR P2
 //USER.UPDATE
-User.update
-//listar users na home
+User.update()
+//listar users na homeconst
 app.get('/', async (req, res) => {
 
     const users = await user.findAll({ raw: true })
